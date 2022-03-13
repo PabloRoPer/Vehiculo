@@ -1,6 +1,7 @@
 from blinker import *
 from engine import *
 from fuel import *
+from enviroment import *
 
 class Vehicle:
     def __init__(self):
@@ -8,19 +9,23 @@ class Vehicle:
         self.blinker_rear = Blinker(BLINKER_REAR)
         self.engine = Engine()
         self.fuel = Fuel(self.engine)
+        self.enviroment = Enviroment()
 
     def __str__(self):
-        status = str(self.blinker_front) + ' ' + str(self.blinker_rear) + "\n" + str(self.engine) + "\n" + "Combustible: " + str(self.fuel.level)
+        status = ""
+        status += str(self.blinker_front) + "  BLINKERS  " + str(self.blinker_rear) + "\n"
+        status += str(self.engine) + "\n"
+        status += "Combustible: " + str(self.fuel.level) + "\n"
+        status += "Luminosidad: " + str(self.enviroment.get_lum())
         return status
 
 
     def do_work(self):
 
         while self.fuel.level > 0:            
-            self.fuel.update()
             print(self)
-
             key = input('next action (q quit): ')
+
             if key == 's':
                 self.blinker_front.change()
             if key == 'a':
@@ -33,16 +38,16 @@ class Vehicle:
                 self.engine.modify_gear(1)
             if key == 'd':
                 self.engine.modify_gear(-1)
-            #if key == 'r':
-            #    self.environment.modify_lum(10)
-            #if key == 'f':
-            #    self.environment.modify_lum(-10)
+            if key == 'r':
+                self.enviroment.modify_lum(10)
+            if key == 'f':
+                self.enviroment.modify_lum(-10)
 
             if key == 'q':
                 exit()
             
             #self.light.update()
-            #self.fuel.update()
+            self.fuel.update()
 
 
 if __name__ == "__main__":
