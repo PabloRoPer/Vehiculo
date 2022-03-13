@@ -1,4 +1,5 @@
-# Blinker position (pos attribute)
+# Blinker
+
 BLINKER_FRONT = 1
 BLINKER_REAR = 2
 

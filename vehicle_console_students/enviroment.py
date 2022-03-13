@@ -12,3 +12,6 @@ class Enviroment:
         
     def get_lum(self):
         return self.lum
+
+    def __str__(self):
+        return "Luminosidad: " + str(self.lum) + "%"
