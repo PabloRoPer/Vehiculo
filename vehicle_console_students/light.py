@@ -25,5 +25,3 @@ class Light:
             resultado = "Desactivadas"
 
         return "Luces: " + str(resultado)
-        
-    

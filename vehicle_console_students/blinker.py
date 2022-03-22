@@ -26,4 +26,3 @@ class Blinker:
         else:
             status = 'D'
         return status
-
